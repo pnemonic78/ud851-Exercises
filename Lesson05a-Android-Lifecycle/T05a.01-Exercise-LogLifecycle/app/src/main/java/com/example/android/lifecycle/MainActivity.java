@@ -47,43 +47,43 @@ public class MainActivity extends AppCompatActivity {
 
         mLifecycleDisplay = (TextView) findViewById(R.id.tv_lifecycle_events_display);
 
-        logAndAppend("ON_CREATE");
+        logAndAppend(ON_CREATE);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        logAndAppend("ON_START");
+        logAndAppend(ON_START);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        logAndAppend("ON_RESUME");
+        logAndAppend(ON_RESUME);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        logAndAppend("ON_PAUSE");
+        logAndAppend(ON_PAUSE);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        logAndAppend("ON_STOP");
+        logAndAppend(ON_STOP);
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        logAndAppend("ON_RESTART");
+        logAndAppend(ON_RESTART);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        logAndAppend("ON_DESTROY");
+        logAndAppend(ON_DESTROY);
     }
 
     /**
