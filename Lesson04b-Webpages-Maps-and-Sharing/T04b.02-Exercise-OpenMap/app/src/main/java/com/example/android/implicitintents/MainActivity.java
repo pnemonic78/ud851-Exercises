@@ -51,8 +51,6 @@ public class MainActivity extends AppCompatActivity {
         String address = "1600 Amphitheatre Parkway, CA";
 
         Uri addressUri = Uri.parse("geo:0,0?q=" + Uri.encode(address));
-        String s = addressUri.toString();
-        System.out.println("±!@ " + s);
 
         showMap(addressUri);
     }
