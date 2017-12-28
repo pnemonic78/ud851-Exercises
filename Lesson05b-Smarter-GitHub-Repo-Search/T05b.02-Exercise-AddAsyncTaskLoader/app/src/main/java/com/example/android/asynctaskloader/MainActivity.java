@@ -134,6 +134,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 }
 
                 mLoadingIndicator.setVisibility(View.VISIBLE);
+
+                forceLoad();
             }
 
             @Override
