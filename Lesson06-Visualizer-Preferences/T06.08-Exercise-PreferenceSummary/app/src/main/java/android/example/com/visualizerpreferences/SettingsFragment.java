@@ -57,7 +57,11 @@ public class SettingsFragment extends PreferenceFragmentCompat implements OnShar
         if (preference instanceof ListPreference) {
             ListPreference listPreference = (ListPreference) preference;
             int index = listPreference.findIndexOfValue(listPreference.getValue());
-            listPreference.setSummary(listPreference.getEntries()[index]);
+            if (index >= 0) {
+                listPreference.setSummary(listPreference.getEntries()[index]);
+            } else {
+                listPreference.setSummary(null);
+            }
         }
     }
 
