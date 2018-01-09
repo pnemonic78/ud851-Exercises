@@ -35,7 +35,7 @@ public class TaskContentProvider extends ContentProvider {
     public boolean onCreate() {
         dbhelper = new TaskDbHelper(getContext());
 
-        return false;
+        return true;
     }
 
 
