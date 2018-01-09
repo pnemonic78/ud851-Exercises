@@ -16,10 +16,17 @@
 
 package com.example.android.todolist;
 
+import android.content.ContentValues;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
+
+import com.example.android.todolist.data.TaskContract;
 
 
 public class AddTaskActivity extends AppCompatActivity {
@@ -27,6 +34,7 @@ public class AddTaskActivity extends AppCompatActivity {
     // Declare a member variable to keep track of a task's selected mPriority
     private int mPriority;
 
+    private EditText mDescriptionTextView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +43,8 @@ public class AddTaskActivity extends AppCompatActivity {
         // Initialize to highest mPriority by default (mPriority = 1)
         ((RadioButton) findViewById(R.id.radButton1)).setChecked(true);
         mPriority = 1;
+
+        mDescriptionTextView = (EditText) findViewById(R.id.editTextTaskDescription);
     }
 
 
@@ -43,14 +53,19 @@ public class AddTaskActivity extends AppCompatActivity {
      * It retrieves user input and inserts that new task data into the underlying database.
      */
     public void onClickAddTask(View view) {
-        // Not yet implemented
-        // TODO (6) Check if EditText is empty, if not retrieve input and store it in a ContentValues object
+        CharSequence input = mDescriptionTextView.getText();
+        if (TextUtils.isEmpty(input)) {
+            return;
+        }
 
-        // TODO (7) Insert new task data via a ContentResolver
+        ContentValues values = new ContentValues();
+        values.put(TaskContract.TaskEntry.COLUMN_DESCRIPTION, input.toString());
+        values.put(TaskContract.TaskEntry.COLUMN_PRIORITY, mPriority);
+        Uri uri = getContentResolver().insert(TaskContract.TaskEntry.CONTENT_URI, values);
 
-        // TODO (8) Display the URI that's returned with a Toast
-        // [Hint] Don't forget to call finish() to return to MainActivity after this insert is complete
+        Toast.makeText(this, "Added task: " + uri, Toast.LENGTH_LONG).show();
 
+        finish();
     }
 
 
