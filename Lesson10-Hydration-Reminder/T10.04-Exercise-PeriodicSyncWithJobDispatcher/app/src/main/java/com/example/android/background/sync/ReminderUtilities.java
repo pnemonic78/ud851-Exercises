@@ -16,7 +16,6 @@
 package com.example.android.background.sync;
 
 import android.content.Context;
-import android.text.format.Time;
 
 import java.util.concurrent.TimeUnit;
 
