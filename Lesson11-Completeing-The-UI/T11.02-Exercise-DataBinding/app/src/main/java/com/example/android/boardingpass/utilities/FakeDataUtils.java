@@ -59,7 +59,7 @@ public class FakeDataUtils {
         bpi.departureTerminal = "3A";
         bpi.departureGate = "33C";
         bpi.seatNumber = "1A";
-        bpi.barCodeImageResource = R.drawable.art_plane;
+        bpi.barCodeImageResource = R.mipmap.barcode;
 
         return bpi;
     }
