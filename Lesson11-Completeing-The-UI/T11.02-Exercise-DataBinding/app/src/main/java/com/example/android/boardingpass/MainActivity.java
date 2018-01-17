@@ -21,6 +21,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateUtils;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 import com.example.android.boardingpass.databinding.ActivityMainBinding;
 import com.example.android.boardingpass.utilities.FakeDataUtils;
 
@@ -48,10 +51,11 @@ public class MainActivity extends AppCompatActivity {
         mBinding.textViewSeat.setText(info.seatNumber);
         mBinding.barcode.setImageResource(info.barCodeImageResource);
 
-        mBinding.textViewBoardingTime.setText(DateUtils.formatDateTime(this, info.boardingTime.getTime(), DateUtils.FORMAT_SHOW_TIME));
+        SimpleDateFormat formatter = new SimpleDateFormat(getString(R.string.timeFormat), Locale.getDefault());
+        mBinding.textViewBoardingTime.setText(formatter.format(info.boardingTime));
         mBinding.textViewBoardingInCountdown.setText(DateUtils.formatElapsedTime(info.getMinutesUntilBoarding()));
-        mBinding.textViewDepartureTime.setText(DateUtils.formatDateTime(this, info.departureTime.getTime(), DateUtils.FORMAT_SHOW_TIME));
-        mBinding.textViewArrivalTime.setText(DateUtils.formatDateTime(this, info.arrivalTime.getTime(), DateUtils.FORMAT_SHOW_TIME));
+        mBinding.textViewDepartureTime.setText(formatter.format(info.departureTime.getTime()));
+        mBinding.textViewArrivalTime.setText(formatter.format(info.arrivalTime.getTime()));
     }
 }
 
